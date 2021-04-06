@@ -1,0 +1,65 @@
+head, body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.h3, h3{
+    margin-bottom:25px; 
+    font-size:21pt;
+    font-weight: bold;
+}
+
+.h5, h5{
+    margin-bottom:25px; 
+}
+
+label{
+    font-size:8pt; 
+    font-weight: bold;
+}
+
+#remember-me{
+    margin-bottom:15px;
+}
+
+.btn-info{
+    border-radius:15px;
+    background-color:#1788b8!important;
+}
+
+#register-link{
+    font-size:8pt;
+}
+
+#image-column{
+    margin-top:-140px; 
+}
+
+.text-info{
+    color:#1788b8!important;
+}
+
+label.text-info{
+    color:#343a40!important;
+}
+
+#avatars{
+    width:550px;
+    height: 130px;
+    overflow-y: auto;
+  }
+  .avatars > input{
+    display: none;
+  }
+  
+  .avatars > input + img{
+    cursor: pointer;
+    border: 2px solid transparent;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .avatars > input:checked + img{
+    border: 2px solid #1788b8;
+  }
+
+  
