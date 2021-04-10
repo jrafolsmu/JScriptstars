@@ -40,6 +40,34 @@ const server = http.createServer((req, res) => {
             }
         });
     }
+    else if(url === '/selectrooms.html'){ 
+        url = `${__dirname}/public`+url; 
+        fs.readFile(url, 'utf8', (err, data) =>{
+            if (err){
+                res.writeHead(404); 
+                res.end('PAGE NOT FOUND');
+            } else {
+                res.writeHead(200, {"Content-Type": "text/html"});
+                res.end(data);
+            }
+        });
+    }
+
+    else if(url==='/sala.html'){
+        url = `${__dirname}/public`+url; 
+        fs.readFile(url, 'utf8', (err, data) =>{
+            if (err){
+                res.writeHead(404); 
+                res.end('PAGE NOT FOUND');
+            } else {
+                res.writeHead(200, {"Content-Type": "text/html"});
+                res.end(data);
+            }
+        });
+
+    }
+
+
 
     else if(url.includes('styles')){
         url = `${__dirname}`+url;

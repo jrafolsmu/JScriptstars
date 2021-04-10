@@ -62,4 +62,32 @@ label.text-info{
     border: 2px solid #1788b8;
   }
 
-  
+  /* selec room */
+  nav{
+    margin-bottom: 100px;
+   }
+   .salas{
+     margin-top: 100px;
+   }
+   .salas .sala{
+     height:285px;
+     /*border:1px solid red;*/
+     background-image: url(../images/salaimg.png);
+     background-size: cover;
+     background-repeat: no-repeat;
+
+   }
+   .sala span{
+     background-color: #8cc18c;
+     color: white;
+     padding: 10px 5px;
+     display: inline-block;
+
+   }
+   #avatar{
+     display: block;
+     margin: 0 auto;
+     border: 1px solid;
+     border-radius: 50px;
+    padding: 3px;
+   }
