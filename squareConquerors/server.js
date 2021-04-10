@@ -7,17 +7,24 @@ const host = 'localhost';
 
 // Crear nuestro servidor
 const server = http.createServer((req, res) => {
-
+   
+  
     //Url
-    let url = req.url;  
-    console.log("url", url)
+    // esto es la url que recibe del cliente
+    let urlc = req.url;  
+    console.log("url", urlc);
     
+    const myURL = url.parse(urlc);
+    console.log("esot es");
+    console.log(myURL);
+  
 
-    //Enrutado
-    if (url === '/' || url === '/login.html'){
-        url = "/login.html"
-        url = `${__dirname}/public`+url; 
-        fs.readFile(url, 'utf8', (err, data) =>{
+
+//Enrutado
+    if (urlc === '/' || urlc === '/login.html'){
+        urlc = "/login.html"
+        urlc = `${__dirname}/public`+urlc; 
+        fs.readFile(urlc, 'utf8', (err, data) =>{
             if (err){
                 res.writeHead(404); 
                 res.end('PAGE NOT FOUND');
@@ -28,9 +35,9 @@ const server = http.createServer((req, res) => {
         });
     }
 
-    else if(url === '/register.html'){
-        url = `${__dirname}/public`+url; 
-        fs.readFile(url, 'utf8', (err, data) =>{
+    else if(urlc === '/register.html'){
+        urlc = `${__dirname}/public`+urlc; 
+        fs.readFile(urlc, 'utf8', (err, data) =>{
             if (err){
                 res.writeHead(404); 
                 res.end('PAGE NOT FOUND');
@@ -40,9 +47,9 @@ const server = http.createServer((req, res) => {
             }
         });
     }
-    else if(url === '/selectrooms.html'){ 
-        url = `${__dirname}/public`+url; 
-        fs.readFile(url, 'utf8', (err, data) =>{
+    else if(urlc === '/selectrooms.html'){ 
+        urlc = `${__dirname}/public`+urlc; 
+        fs.readFile(urlc, 'utf8', (err, data) =>{
             if (err){
                 res.writeHead(404); 
                 res.end('PAGE NOT FOUND');
@@ -53,9 +60,9 @@ const server = http.createServer((req, res) => {
         });
     }
 
-    else if(url==='/sala.html'){
-        url = `${__dirname}/public`+url; 
-        fs.readFile(url, 'utf8', (err, data) =>{
+    else if(myURL.pathname==='/sala.html'){
+        urlc = `${__dirname}/public`+myURL.pathname; 
+        fs.readFile(urlc, 'utf8', (err, data) =>{
             if (err){
                 res.writeHead(404); 
                 res.end('PAGE NOT FOUND');
@@ -69,9 +76,9 @@ const server = http.createServer((req, res) => {
 
 
 
-    else if(url.includes('styles')){
-        url = `${__dirname}`+url;
-        fs.readFile(url, 'utf8', (err, data) =>{
+    else if(urlc.includes('styles')){
+        urlc = `${__dirname}`+urlc;
+        fs.readFile(urlc, 'utf8', (err, data) =>{
             if (err){
                 res.writeHead(404); 
                 res.end('PAGE NOT FOUND');
@@ -84,9 +91,9 @@ const server = http.createServer((req, res) => {
 
     }
 
-    else if(url.includes('images')){
-        url = `${__dirname}`+url;
-        fs.readFile(url, (err, data) =>{
+    else if(urlc.includes('images')){
+        urlc = `${__dirname}`+urlc;
+        fs.readFile(urlc, (err, data) =>{
             if (err){
                 res.writeHead(404); 
                 res.end('PAGE NOT FOUND');
@@ -99,8 +106,8 @@ const server = http.createServer((req, res) => {
     }
 
     else if(path.extname === '.js'){
-        url = `${__dirname}`+url;
-        fs.readFile(url, (err, data) =>{
+        urlc = `${__dirname}`+urlc;
+        fs.readFile(urlc, (err, data) =>{
             if (err){
                 res.writeHead(404); 
                 res.end('PAGE NOT FOUND');
