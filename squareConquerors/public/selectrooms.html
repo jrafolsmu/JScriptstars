@@ -4,12 +4,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS --> 
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/login-style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="../images/square-conquerors-favicon.ico">
-
 
 <script>
   function allowDrop(ev) {
@@ -36,44 +35,54 @@
     document.getElementById("username").innerHTML = username;
   }
 
+  function getUsernameNavBar(){
+    let username = window.localStorage.getItem('username');
+    document.getElementById("usernameNavBar").innerHTML = username;
+  }
 
-  </script>
+  function getAvatar(){
+    let avatar = window.localStorage.getItem('avatar');
+    document.getElementById("avatar").innerHTML = avatar;
+  }  
+    </script>
 
     <title>squareConquerors</title>
   </head>
   <body id="cos">
-   
-    <div class="container">
-      <h3 class="text-center text-white pt-5">Selectrooms</h3>
-      <nav>
-        <h3 class="text-left text-info">Welcome <span id="username"></span>!</h3>
-        <h5 class="text-left text-info">Please drag your avatar to the room where you want to play</h5>
-      </nav>
-
-
-      <img id="avatar" class="text-center"  height="45px;" ondragstart="drag(event)" draggable="true" src="../images/darthVader.png" alt=""/>
-
-
-      <div class="row salas">
-        <div id="otaku" class="col-md-3 offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.html?id=otaku">
-         <span>Otaku room</span> 
-        </div>
-        <div id="reptil"  class="col-md-3  offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.html?id=reptil">
-          <span>Reptilian room</span>
-        </div>
-        <div id="indef" class="col-md-3  offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.html?id=indef">
-          <span>Undefined room</span>
-        </div>
+    <nav class="navbar navbar-dark bg-dark">
+      <a style="color: white"><span>Hello <span id="usernameNavBar"></span></span></a>
+      <div class="dropdown">
+          <a style="color: white" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> My profile</a>
+          <div class="dropdown-menu text-center">
+              <a href="profile.html">My profile</a>
+              <div class="dropdown-divider"></div>
+              <a href="#" onclick="modify()" class="dropdown-item">Modify</a>
+              <a href="#" onclick="logout()" class="dropdown-item">Log out</a>
+          </div>
       </div>
-
-
+</nav>
+  <div class="container">
+    <h3 class="text-center text-white pt-5">Selectrooms</h3>
+    <h3 class="text-left text-info">Choose your room, <span id="username"></span></h3>
+    <h5 class="text-left text-info">Please drag your avatar to the room where you want to play</h5>
+    <img id="avatar" class="text-center"  height="45px;" ondragstart="drag(event)" draggable="true" src="../images/darthVader.png" alt=""/>
+    <div class="row salas">
+      <div id="otaku" class="col-md-3 offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.html?id=otaku">
+        <span>Otaku room</span> 
+      </div>
+      <div id="reptilian"  class="col-md-3  offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.html?id=reptilian">
+        <span>Reptilian room</span>
+      </div>
+      <div id="undefined" class="col-md-3  offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.html?id=undefined">
+        <span>Undefined room</span>
+      </div>
     </div>
-
-
-
+  </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>getUsernameNavBar()</script>
     <script>getUsername()</script>
+    <script>getAvatar()</script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

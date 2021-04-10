@@ -57,19 +57,15 @@
                 let player2 = {username: 'Javascripstars', password: 'Password12345'};
                 let player3 = {username: 'Superman', password: 'Password12345'};
                 let players = [player1, player2, player3];
-                let newUsername = document.forms["login-form"]["username"].value;
-                let newPassword = document.forms["login-form"]["password"].value;
-                localStorage.setItem('username',newUsername);
-
-                let newPlayerUsername = players.find(player => player.username == newUsername);
-                let newPlayerPassword = players.find(player => player.password == newPassword);                     
+                let newPlayerUsername = document.forms["login-form"]["username"].value;
+                let newPlayerPassword = document.forms["login-form"]["password"].value;
                 if (newPlayerUsername !== undefined && newPlayerPassword !== undefined){
-                    userRegistered = true
+                    userRegistered = true; 
                 } else{
                     userRegistered = false;
                     alert("This player is not registered. Please register first in order to play the game!");
-
                 }
+                localStorage.setItem('username', newUsername);
                 return userRegistered;
             }       
         </script>

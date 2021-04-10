@@ -28,9 +28,9 @@ const server = http.createServer((req, res) => {
         });
     }
 
-    else if(url === '/register.html'){
-        url = `${__dirname}/public`+url; 
-        fs.readFile(url, 'utf8', (err, data) =>{
+    else if(myURL.pathname==='/room.html'){
+        urlc = `${__dirname}/public`+myURL.pathname; 
+        fs.readFile(urlc, 'utf8', (err, data) =>{
             if (err){
                 res.writeHead(404); 
                 res.end('PAGE NOT FOUND');
