@@ -4,13 +4,14 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Bootstrap CSS --> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/login-style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
+    <link rel="shortcut icon" type="image/x-icon" href="../images/square-conquerors-favicon.ico">
+
 
 <script>
-  console.log(hola);
   function allowDrop(ev) {
     ev.preventDefault();
   }
@@ -29,6 +30,13 @@
     window.location.href = url;
 
   }
+
+  function getUsername(){
+    let username = window.localStorage.getItem('username');
+    document.getElementById("username").innerHTML = username;
+  }
+
+
   </script>
 
     <title>squareConquerors</title>
@@ -36,21 +44,25 @@
   <body id="cos">
    
     <div class="container">
-        <nav><h3>Bienvenido Fulanito</h3></nav>
+      <h3 class="text-center text-white pt-5">Selectrooms</h3>
+      <nav>
+        <h3 class="text-left text-info">Welcome <span id="username"></span>!</h3>
+        <h5 class="text-left text-info">Please drag your avatar to the room where you want to play</h5>
+      </nav>
 
 
-        <img id="avatar" class="text-center"  height="45px;" ondragstart="drag(event)" draggable="true" src="../images/darthVader.png" alt=""/>
+      <img id="avatar" class="text-center"  height="45px;" ondragstart="drag(event)" draggable="true" src="../images/darthVader.png" alt=""/>
 
 
       <div class="row salas">
-        <div id="otaku" class="col-md-3 offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/sala.html">
-         <span>Sala Otaku</span> 
+        <div id="otaku" class="col-md-3 offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.html?id=otaku">
+         <span>Otaku room</span> 
         </div>
-        <div id="reptil"  class="col-md-3  offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/sala.html?id=reptil">
-          <span>Sala Reptiliana</span>
+        <div id="reptil"  class="col-md-3  offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.html?id=reptil">
+          <span>Reptilian room</span>
         </div>
-        <div id="indef" class="col-md-3  offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/sala.html?id=indef">
-          <span>Sala Indefinida</span>
+        <div id="indef" class="col-md-3  offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.html?id=indef">
+          <span>Undefined room</span>
         </div>
       </div>
 
@@ -61,6 +73,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>getUsername()</script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

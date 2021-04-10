@@ -18,7 +18,7 @@
                 <div id="login-row" class="row justify-content-left align-items-left">
                     <div id="login-column" class="col-md-6">
                         <div id="login-box" class="col-md-12">
-                            <form id="login-form" class="form" action="" method="post" onsubmit="return isUserRegistered()">
+                            <form id="login-form" class="form" action="./selectrooms.html" method="post" onsubmit="return isUserRegistered()">
                                 <h3 class="text-left text-info">Login</h3>
                                 <h5 class="text-left text-info">It is nice to see you again!</h5>
                                 <div class="form-group">
@@ -58,16 +58,19 @@
                 let player3 = {username: 'Superman', password: 'Password12345'};
                 let players = [player1, player2, player3];
                 let newUsername = document.forms["login-form"]["username"].value;
+                let newPassword = document.forms["login-form"]["password"].value;
+                localStorage.setItem('username',newUsername);
 
-                let newPlayer = players.find(player => player.username == newUsername);
-                if (newPlayer){
-                    alert("This player is already registered. Please insert a different username.");
-                    newPlayer = false
+                let newPlayerUsername = players.find(player => player.username == newUsername);
+                let newPlayerPassword = players.find(player => player.password == newPassword);                     
+                if (newPlayerUsername !== undefined && newPlayerPassword !== undefined){
+                    userRegistered = true
                 } else{
-                    newPlayer = true;
+                    userRegistered = false;
+                    alert("This player is not registered. Please register first in order to play the game!");
+
                 }
-                console.log(newPlayer);
-                return newPlayer;
+                return userRegistered;
             }       
         </script>
     </body>
