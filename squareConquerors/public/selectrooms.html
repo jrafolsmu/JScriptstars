@@ -25,7 +25,8 @@
       ev.target.appendChild(document.getElementById(data));
       console.log(ev.target);
       var url=ev.target.getAttribute('url');
-      console.log(url);
+      console.log("url",url);
+      window.localStorage.setItem("favoriteRoom", url) //guardamos sala favorita
       window.location.href = url;
 
     }
@@ -58,8 +59,13 @@
   </head>
   <body id="cos">
     <nav class="navbar navbar-dark bg-dark">
-      <a style="color: white"><span>Hello <span id="usernameNavBar"></span></span></a>
-        <div class="dropdown">
+      <div class="col-1">
+        <a style="color: white" href="../"><img src="../images/backarrow.png" width="20px" height="20px" alt=""></a>
+      </div>
+      <div class="col-5">
+        <a style="color: white"><span>Hello <span id="usernameNavBar"></span></span></a>
+      </div>
+        <div class="col-6 text-right" class="dropdown">
           <a style="color: white" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> My profile</a>
           <div class="dropdown-menu text-center">
             <a href="profile.html">My profile</a>
@@ -72,8 +78,9 @@
   <div class="container">
     <h3 class="text-left text-info">Choose your room, <span id="username"></span></h3>
     <h5 class="text-left text-info">Please drag your avatar to the room where you want to play</h5>
+    <h6 class="text-left text-info font-italic">Or would you like to go to your favorite <a id="favorite" style="color: red" href="#" onclick="favoriteRoom()">room</a>?</h6>
     <img id="avatar" class="text-center" height="100px" ondragstart="drag(event)" draggable="true" src="" alt=""/>
-    <div class="row salas">
+    <div id="salas" class="row salas">
       <div id="otaku" class="col-md-3 offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.html?id=otaku">
         <span>Otaku room</span> 
       </div>
@@ -94,6 +101,11 @@
       function logout() {
           localStorage.clear();
           location.assign("login.html");
+      }
+
+      function favoriteRoom(){
+        let favoriteRoom = window.localStorage.getItem("favoriteRoom");
+        document.getElementById("favorite").setAttribute("href", favoriteRoom);
       }
   </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

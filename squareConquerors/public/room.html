@@ -17,8 +17,16 @@
     console.log(room);
 
     function getAvatar(){
+        let username = window.localStorage.getItem('username');
         let avatar = window.localStorage.getItem('src');
         document.getElementById("avatar").setAttribute("src", avatar);
+        if (avatar == null){
+        playersRegistered = window.localStorage.getItem('players');
+        let savedPlayers = JSON.parse(playersRegistered);
+        let playerLoggedIn = savedPlayers.find(player => player.username == username);
+        avatar = playerLoggedIn.avatar; 
+        document.getElementById("avatar").setAttribute("src", avatar);
+      }
     } 
 
     function getUsernameNavBar(){
@@ -32,8 +40,13 @@
 
   <body id="cos">
     <nav class="navbar navbar-dark bg-dark">
-        <a style="color: white"><span>Hello <span id="usernameNavBar"></span></span></a>
-          <div class="dropdown">
+        <div class="col-1">
+          <a style="color: white" href="../"><img src="../images/backarrow.png" width="20px" height="20px" alt=""></a>
+        </div>
+        <div class="col-5">
+          <a style="color: white"><span>Hello <span id="usernameNavBar"></span></span></a>
+        </div>
+          <div class="col-6 text-right" class="dropdown">
             <a style="color: white" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> My profile</a>
             <div class="dropdown-menu text-center">
               <a href="profile.html">My profile</a>
@@ -42,7 +55,7 @@
               <a href="#" onclick="logout()" class="dropdown-item">Log out</a>
             </div>
         </div>
-    </nav>
+      </nav>
     <div class="container">
         <h3 class="text-center text-white pt-5">Room</h3>
         <h3 class="text-left text-info">Welcome to the <span id="nameroom"></span> room</h3>
