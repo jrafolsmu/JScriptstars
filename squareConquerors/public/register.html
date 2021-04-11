@@ -27,7 +27,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="text-info">Password:</label><br>
-                                    <input type="text" name="password" id="password" class="form-control" pattern="^[a-zA-Z][a-zA-Z0-9]{3,15}$" title="The password field must begin with a letter,and contain letters and numbers. It must also contain from 3 to 15 characters" required>
+                                    <input type="password" name="password" id="password" class="form-control" pattern="^[a-zA-Z][a-zA-Z0-9]{3,15}$" title="The password field must begin with a letter,and contain letters and numbers. It must also contain from 3 to 15 characters" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="avatar" class="text-info" id="avatar-label" required>Avatar:</label><br>
@@ -77,10 +77,23 @@
             function savePlayer(){
                 let newUsername = document.forms["register-form"]["username"].value;
                 let newAvatar = document.forms["register-form"]["selectedAvatar"].value;
-                console.log("avatars", newAvatar)
+
                 localStorage.setItem('username',newUsername);
                 localStorage.setItem('src',newAvatar);
-                return true;
+                let playersRegistered = window.localStorage.getItem("players");
+                console.log("playersRegistered", playersRegistered)
+                let savedPlayers = JSON.parse(playersRegistered);
+                let newPlayerUsername = savedPlayers.find(player => player.username == newUsername);
+
+                //Checking the user already exists with that username or not before allowing register
+                if (newPlayerUsername == undefined){
+                    newPlayer = true
+                } else{
+                    newPlayer = false;
+                    alert("This player is already registered. Please choose a different username in order to register!");
+                }
+
+                return newPlayer;
             }
         </script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

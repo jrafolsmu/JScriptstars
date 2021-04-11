@@ -10,33 +10,54 @@
     <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="../images/square-conquerors-favicon.ico">
 
-<script>
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const room = urlParams.get('id');
-console.log(room);
+    <script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const room = urlParams.get('id');
+    console.log(room);
 
-  </script>
+    function getAvatar(){
+        let avatar = window.localStorage.getItem('src');
+        document.getElementById("avatar").setAttribute("src", avatar);
+    } 
+
+    function getUsernameNavBar(){
+      let username = window.localStorage.getItem('username');
+      document.getElementById("usernameNavBar").innerHTML = username;
+    }
+    </script>
 
     <title>squareConquerors</title>
   </head>
+
   <body id="cos">
-   
+    <nav class="navbar navbar-dark bg-dark">
+        <a style="color: white"><span>Hello <span id="usernameNavBar"></span></span></a>
+          <div class="dropdown">
+            <a style="color: white" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> My profile</a>
+            <div class="dropdown-menu text-center">
+              <a href="profile.html">My profile</a>
+              <div class="dropdown-divider"></div>
+              <a href="#" onclick="modify()" class="dropdown-item">Modify</a>
+              <a href="#" onclick="logout()" class="dropdown-item">Log out</a>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <h3 class="text-center text-white pt-5">Room</h3>
         <h3 class="text-left text-info">Welcome to the <span id="nameroom"></span> room</h3>
-
-
-        <img id="avatar" class="text-center"  height="45px;" src="../images/darthVader.png" alt=""/>
-
-
-
-
+        <img id="avatar" class="text-center"  height="100px" src="" alt=""/>
     </div>
 
-<script>document.getElementById("nameroom").innerHTML = room;
-</script>
-
+    <script>document.getElementById("nameroom").innerHTML = room;</script>
+    <script>getAvatar()</script>
+    <script>getUsernameNavBar()</script>
+    <script>
+        function logout() {
+            localStorage.clear();
+            location.assign("login.html");
+        }
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

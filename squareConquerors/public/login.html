@@ -10,6 +10,21 @@
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="../images/square-conquerors-favicon.ico">
+    <script>
+         //Como el login.html es lo primero que se ejecuta. Guardamos aquí los usurios creados a fuego en localstorage
+        function createPlayers(){
+            let player1 = {username: 'Paco', password: 'Password12345', avatar: "../images/vegeta.jpg"};
+            let player2 = {username: 'Javascripstars', password: 'Password12345', avatar: "../images/mickey.jpg"};
+            let player3 = {username: 'Superman', password: 'Password12345', avatar: "../images/naruto.jpg"};
+            let players = [player1, player2, player3];
+            localStorage.setItem('players', JSON.stringify(players));
+            console.log("players", players)
+            return players;
+        }
+
+        createPlayers()
+
+    </script>
     </head>
     <body>
         <div id="login">
@@ -27,7 +42,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="text-info">Password:</label><br>
-                                    <input type="text" name="password" id="password" class="form-control" pattern="^[a-zA-Z][a-zA-Z0-9]{3,15}$" title="The password field must begin with a letter,and contain letters and numbers. It must also contain from 3 to 15 characters" required>
+                                    <input type="password" name="password" id="password" class="form-control" pattern="^[a-zA-Z][a-zA-Z0-9]{3,15}$" title="The password field must begin with a letter,and contain letters and numbers. It must also contain from 3 to 15 characters" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="remember-me" class="text-info" id="remember-me">
@@ -50,31 +65,35 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-        <script>
-            //Jugadores grabados a "fuego" en el juego   
+        <script>   
+        
+        //Comprobamos si los jugadores existen o no para permitir el login
         function isUserRegistered(){
-            
-            let player1 = {username: 'Paco', password: 'Password12345'};
-            let player2 = {username: 'Javascripstars', password: 'Password12345'};
-            let player3 = {username: 'Superman', password: 'Password12345'};
-            let players = [player1, player2, player3];
 
             let newUsername = document.forms["login-form"]["username"].value;
             let newPassword = document.forms["login-form"]["password"].value;
 
             localStorage.setItem('username',newUsername);
 
-            let newPlayerUsername = players.find(player => player.username == newUsername);
-            let newPlayerPassword = players.find(player => player.password == newPassword); 
+            let playersRegistered = window.localStorage.getItem("players");
+            console.log("playersRegistered", playersRegistered)
+            let savedPlayers = JSON.parse(playersRegistered);
+
+            let newPlayerUsername = savedPlayers.find(player => player.username == newUsername);
+            let newPlayerPassword = savedPlayers.find(player => player.password == newPassword); 
 
             if (newPlayerUsername !== undefined && newPlayerPassword !== undefined){
                 userRegistered = true
+            } else if(newPlayerUsername !== undefined && newPlayerPassword == undefined){
+                userRegistered = false;
+                alert("The password you have introduced in not correct. Please, try again.")
             } else{
                 userRegistered = false;
                 alert("This player is not registered. Please register first in order to play the game!");
             }
-        }
+        
             return userRegistered;
+        }
         </script>
     </body>
   </html>

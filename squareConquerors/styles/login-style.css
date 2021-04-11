@@ -87,8 +87,6 @@ nav{
  #avatar{
    display: block;
    margin: 0 auto;
-   border: 1px solid;
-   border-radius: 50px;
-  padding: 3px;
+    padding: 3px;
  }
   
