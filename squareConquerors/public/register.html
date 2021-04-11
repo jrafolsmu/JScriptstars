@@ -30,31 +30,31 @@
                                     <input type="text" name="password" id="password" class="form-control" pattern="^[a-zA-Z][a-zA-Z0-9]{3,15}$" title="The password field must begin with a letter,and contain letters and numbers. It must also contain from 3 to 15 characters" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="avatar" class="text-info" id="avatar" required>Avatar:</label><br>
+                                    <label for="avatar" class="text-info" id="avatar-label" required>Avatar:</label><br>
                                     <div id="avatars">
                                         <form>
                                         <label class="avatars">
-                                          <input type="radio" name="avatar"/>
-                                          <img src="../images/darthVader.png" alt=""/>
+                                          <input type="radio" name="selectedAvatar" value="../images/darthVader.png"/>
+                                          <img src="../images/darthVader.png" alt="" />
                                         </label>
                                         
                                         <label class="avatars">
-                                          <input type="radio" name="avatar"/>
-                                          <img src="../images/goku.jpg" alt=""/>
+                                          <input type="radio" name="selectedAvatar" value="../images/goku.jpg"/>
+                                          <img src="../images/goku.jpg" alt="" />
                                         </label>
                                         
                                         <label class="avatars">
-                                          <input type="radio"name="avatar"/>
-                                          <img src="../images/mickey.jpg" alt=""/>
+                                          <input type="radio" name="selectedAvatar" value="../images/mickey.jpg"/>
+                                          <img src="../images/mickey.jpg" alt="" />
                                         </label>
                                         
                                         <label class="avatars">
-                                          <input type="radio" name="avatar"/>
+                                          <input type="radio" name="selectedAvatar" value="../images/naruto.jpg"/>
                                           <img src="../images/naruto.jpg" alt=""/>
                                         </label>
                                         <label class="avatars">
-                                          <input type="radio" name="avatar"/>
-                                          <img src="../images/vegeta.jpg" alt="" />
+                                          <input type="radio" name="selectedAvatar" value="../images/vegeta.jpg"/>
+                                          <img src="../images/vegeta.jpg" alt=""/>
                                         </label>
                                         </form>    
                                     </div>
@@ -76,31 +76,10 @@
         <script>
             function savePlayer(){
                 let newUsername = document.forms["register-form"]["username"].value;
-                let newAvatar = document.forms["register-form"]["avatar"].value;
+                let newAvatar = document.forms["register-form"]["selectedAvatar"].value;
+                console.log("avatars", newAvatar)
                 localStorage.setItem('username',newUsername);
-                // Take action when the image has loaded
-                avatar.addEventListener("load", function () {
-                let imgCanvas = document.createElement("canvas"),
-                    imgContext = imgCanvas.getContext("2d");
-
-                // Make sure canvas is as big as the picture
-                imgCanvas.width = avatar.width;
-                imgCanvas.height = avatar.height;
-
-                // Draw image into canvas element
-                imgContext.drawImage(avatar, 0, 0, avatar.width, avatar.height);
-
-                // Get canvas contents as a data URL
-                let imgAsDataURL = imgCanvas.toDataURL("image/png");
-
-                // Save image into localStorage
-                try {
-                    localStorage.setItem("avatar", imgAsDataURL);
-                }
-                catch (e) {
-                    console.log("Storage failed: " + e);
-                }
-                }, false); 
+                localStorage.setItem('src',newAvatar);
                 return true;
             }
         </script>
