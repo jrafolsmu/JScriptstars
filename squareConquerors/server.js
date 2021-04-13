@@ -105,8 +105,10 @@ else if(urlc.includes('images')){
     });
 }
 
-else if(path.extname === '.js'){
+else if(urlc.includes('model')){
+    console.log("path.extname", path.extname);
     urlc = `${__dirname}`+urlc;
+    console.log("urlc", urlc);
     fs.readFile(urlc, (err, data) =>{
         if (err){
             res.writeHead(404); 
@@ -119,6 +121,7 @@ else if(path.extname === '.js'){
     });
 }
     
+
 });
 
 //Lanzamos el servidor de forma asincrona
