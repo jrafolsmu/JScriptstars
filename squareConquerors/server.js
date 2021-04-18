@@ -60,6 +60,19 @@ else if(urlc === '/selectrooms.html'){
     });
 }
 
+else if(urlc === '/profile.html'){ 
+    urlc = `${__dirname}/public`+urlc; 
+    fs.readFile(urlc, 'utf8', (err, data) =>{
+        if (err){
+            res.writeHead(404); 
+            res.end('PAGE NOT FOUND');
+        } else {
+            res.writeHead(200, {"Content-Type": "text/html"});
+            res.end(data);
+        }
+    });
+}
+
 else if(myURL.pathname==='/room.html'){
     urlc = `${__dirname}/public`+myURL.pathname; 
     fs.readFile(urlc, 'utf8', (err, data) =>{

@@ -83,10 +83,42 @@ nav{
    padding: 10px 5px;
    display: inline-block;
 
+ /* My profile */
+
  }
  #avatar{
    display: block;
    margin: 0 auto;
     padding: 3px;
  }
-  
+
+
+input#change_avatar {
+  position: relative;
+  margin-left: 90px;
+}
+
+#change_avatar {
+  text-align: center;
+  color: white;
+}
+
+#change_username {
+  width: 40%;
+  height: 60%;
+}
+
+#change_password {
+  width: 40%;
+  height: 60%;
+}
+
+label#lbl_username {
+  font-size: 16px;
+}
+
+label#lbl_password {
+  font-size: 16px;
+}
+
+
