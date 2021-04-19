@@ -79,7 +79,7 @@
                 let newAvatar = document.forms["register-form"]["selectedAvatar"].value;
 
                 localStorage.setItem('username',newUsername);
-                localStorage.setItem('src',newAvatar);
+                localStorage.setItem('avatar', newAvatar);
                 let playersRegistered = window.localStorage.getItem("players");
                 console.log("playersRegistered", playersRegistered)
                 let savedPlayers = JSON.parse(playersRegistered);

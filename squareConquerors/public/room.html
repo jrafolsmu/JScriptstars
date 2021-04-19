@@ -20,7 +20,7 @@
 
       function getAvatar(){
           let username = window.localStorage.getItem('username');
-          let avatar = window.localStorage.getItem('src');
+          let avatar = window.localStorage.getItem('avatar');
           document.getElementById("avatar").setAttribute("src", avatar);
           if (avatar == null){
           playersRegistered = window.localStorage.getItem('players');
