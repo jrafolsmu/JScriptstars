@@ -15,26 +15,31 @@
     <script>
 
     function updatePlayer(){
-        
+        let username = window.localStorage.getItem("username");
+        console.log("username", username);
         let newUsername = document.forms["profile-form"]["username"].value;
         let newPassword = document.forms["profile-form"]["password"].value;
         let newAvatar = document.forms["profile-form"]["selectedAvatar"].value;
-    
-            let username = window.localStorage.getItem("username");
-            let playersRegistered = window.localStorage.getItem("players");
-            console.log("playersRegistered", playersRegistered)
-            let savedPlayers = JSON.parse(playersRegistered);
-            let newPlayerUsername = savedPlayers.find(player => player.username == newUsername);
-            
-    
-                return updatedPlayer;
+        let playersRegistered = window.localStorage.getItem("players");
+        let savedPlayers = JSON.parse(playersRegistered);
+        for (let i= 0; i < savedPlayers.length; i++){
+            console.log("playersRegistered", savedPlayers[i].username)
+            if(username == savedPlayers[i].username){
+                savedPlayers[i].username = newUsername; 
+                savedPlayers[i].password = newPassword; 
+                savedPlayers[i].avatar = newAvatar; 
             }
+        }
+        localStorage.setItem('players', JSON.stringify(savedPlayers));
+    
+        return true;
+    }
     
           
    
     function logout() {
-                localStorage.clear();
-                location.assign("login.html");
+        localStorage.clear();
+        location.assign("login.html");
     }
     
     function getAvatar(){
@@ -43,7 +48,6 @@
             let savedPlayers = JSON.parse(playersRegistered);
             let playerLoggedIn = savedPlayers.find(player => player.username == username);
             let savedAvatar = playerLoggedIn.avatar; 
-            console.log("savedAvatar", savedAvatar);
             document.getElementById("photo_avatar").setAttribute("src", savedAvatar);
     }
     
@@ -63,15 +67,15 @@
     <title>My profile</title>
 </head>
 <nav class="navbar navbar-dark bg-dark">
-    <div class="col-1">
+    <div class="col-md-1">
       <a style="color: white" href="../"><img src="../images/backarrow.png" width="20px" height="20px" alt=""></a>
     </div>
-    <div class="col-5">
+    <div class="col-md-5">
       <a style="color: white"><span>Hello <span id="usernameNavBar"></span></span></a>
     </div>
-      <div class="col-6 text-right" class="dropdown">
-        <a style="color: white" class="nav-link dropdown-toggle" data-toggle="dropdown"> <span>Hello <span id="usernameNavBar"></span></span></a>
-        <div class="dropdown-menu text-center">
+    <div class="col-md-6 text-right" class="dropdown">
+        <a style="color: white" class="nav-link dropdown-toggle" data-toggle="dropdown"> <span>My profile</span></span></a>
+        <div class="dropdown-menu text-right">
           <a href="profile.html">My profile</a>
           <div class="dropdown-divider"></div>
           <a href="#" onclick="logout()" class="dropdown-item">Log out</a>
@@ -80,7 +84,6 @@
   </nav>
 <body>
     <div id="profile">
-        <h3 class="text-center text-white pt-5">Profile form</h3>
         <div class="container">
             <div id="profile-row">
                 <form id="profile-form" class="form" action="./selectrooms.html" method="post" onsubmit="return updatePlayer()">
@@ -92,10 +95,10 @@
                                 </svg>
                                 <label class="avatars"></label>
                                 <div>
-                                    <img id="photo_avatar" src="../images/Chewbacca.png" style="height:200px; align-items: center">
+                                    <img id="photo_avatar" src="../images/Chewbacca.png" style="height:200px; margin-bottom:25px;">
                                 </div>
                                     <div class="form-group">
-                                        <label for="avatar" class="text-info" id="avatar-label" required></label><br>
+                                        <label for="avatar" class="text-info" id="avatar-label" style="font-size:16px" required>Please, choose your new avatar</label><br>
                                         <div id="avatars">
                                             <form>
                                             <label class="avatars">
@@ -126,11 +129,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label id="lbl_username" for="username" class="text-info">Change username:</label><br>
-                                        <input type="text" name="username" id="username_change" class="form-control" placeholder="Username">
+                                        <input type="text" name="username" id="username_change" class="form-control" placeholder="Username" required>
                                     </div>
                                     <div class="form-group">
                                         <label id="lbl_password" for="password" class="text-info">Change password:</label><br>
-                                        <input type="password" name="password" id="change_password" class="form-control" pattern="^[a-zA-Z][a-zA-Z0-9]{3,15}$" title="The password field must begin with a letter, and contain letters and numbers. It must also contain from 3 to 15 characters">
+                                        <input type="password" name="password" id="change_password"  class="form-control" placeholder="***********" pattern="^[a-zA-Z][a-zA-Z0-9]{3,15}$" title="The password field must begin with a letter, and contain letters and numbers. It must also contain from 3 to 15 characters" required><br>
+                                        <label id="lbl_message" style="font-size:16px; margin-bottom: 50px" class="text-info">If you don't want to make any changes, just <a href="./selectroom">go back</a> </label><br>
+
                                     </div>
                                 </div>
                                     <div class="col-md-6 text-center">
@@ -138,7 +143,7 @@
                                             
                                             <div id="logo"><img src="../images/square-conquerors-logo.png" height=400 width=400></div>
                                             
-                                            <input type="submit" name="save" id="save-button" class="btn btn-info btn-md" value="Save changes" action="./selectrooms.html" method="post" onsubmit="return updatePlayer()">
+                                            <input type="submit" name="save" id="save-button" class="btn btn-info btn-md" value="Save changes">
                                             <button class="btn btn-info btn-md" onclick="logout()">Log out</button>
                                         </div>
                                     </div>
