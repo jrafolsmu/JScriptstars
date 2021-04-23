@@ -1,3 +1,10 @@
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const room = urlParams.get('id');
+console.log("esto es room", room);
+
+
+//Lógica del juego
 document.addEventListener("DOMContentLoaded", () => {
     const squares = document.querySelectorAll(".grid div");
     const grid = document.querySelector(".grid");
@@ -132,3 +139,38 @@ document.addEventListener("DOMContentLoaded", () => {
          stopGame = ! stopGame;
     });
 });
+
+//Otras lógicas de room.html
+
+
+function logout() {
+    localStorage.clear();
+    location.assign("login.html");
+}
+
+function goto(){
+    window.location="selectrooms.html";
+}
+
+function getAvatar(){
+    let username = window.localStorage.getItem('username');
+    let avatar = window.localStorage.getItem('avatar');
+    document.getElementById("avatar").setAttribute("src", avatar);
+    if (avatar == null){
+    playersRegistered = window.localStorage.getItem('players');
+    let savedPlayers = JSON.parse(playersRegistered);
+    let playerLoggedIn = savedPlayers.find(player => player.username == username);
+    avatar = playerLoggedIn.avatar; 
+    document.getElementById("avatar").setAttribute("src", avatar);
+  }
+} 
+
+function dinamicBackground(){
+  if (room === 'reptilian'){
+    document.body.style.backgroundImage = "url('../images/obama-reptiliano.jpeg')";
+  }
+  else if (room === 'simpsons'){
+    document.body.style.backgroundImage = "url('../images/simpsonsall.jpeg')";
+    document.querySelector("h3").setAttribute("style", "color: black!important");
+  }
+}

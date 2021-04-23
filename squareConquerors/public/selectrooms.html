@@ -9,66 +9,21 @@
   <link rel="stylesheet" href="../styles/login-style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="../images/square-conquerors-favicon.ico">
-
-  <script>
-    function allowDrop(ev) {
-      ev.preventDefault();
-    }
-    
-    function drag(ev) {
-      ev.dataTransfer.setData("text", ev.target.id);
-    }
-    
-    function drop(ev) {
-      ev.preventDefault();
-      var data = ev.dataTransfer.getData("text");
-      ev.target.appendChild(document.getElementById(data));
-      console.log(ev.target);
-      var url=ev.target.getAttribute('url');
-      console.log("url",url);
-      window.localStorage.setItem("favoriteRoom", url) //guardamos sala favorita
-      window.location.href = url;
-
-    }
-
-    function getUsername(){
-      let username = window.localStorage.getItem('username');
-      document.getElementById("username").innerHTML = username;
-    }
-
-    function getUsernameNavBar(){
-      let username = window.localStorage.getItem('username');
-      document.getElementById("usernameNavBar").innerHTML = username;
-    }
-
-    function getAvatar(){
-      let username = window.localStorage.getItem('username');
-      let avatar = window.localStorage.getItem('avatar');
-      document.getElementById("avatar").setAttribute("src", avatar);
-      if (avatar == null){
-        playersRegistered = window.localStorage.getItem('players');
-        let savedPlayers = JSON.parse(playersRegistered);
-        let playerLoggedIn = savedPlayers.find(player => player.username == username);
-        avatar = playerLoggedIn.avatar; 
-        document.getElementById("avatar").setAttribute("src", avatar);
-      }
-    }  
-  </script>
-
-<title>squareConquerors</title>
-  </head>
+  <script type="text/javascript" src="../logic/selectrooms.js"></script>
+  <title>squareConquerors</title>
+</head>
   <body id="cos">
     <nav class="navbar navbar-dark bg-dark">
-      <div class="col-1">
-        <a style="color: white" href="../"><img src="../images/backarrow.png" width="20px" height="20px" alt=""></a>
-      </div>
-      <div class="col-5">
+      <div class="col-md-10">
+        <a style="color: white" href="../"><img src="../images/backarrow.png" style="margin-bottom:3px; margin-right:5px;" width="15px" height="15px" alt=""></a>
         <a style="color: white"><span>Hello <span id="usernameNavBar"></span></span></a>
       </div>
-        <div class="col-6 text-right" class="dropdown">
-          <a style="color: white" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> My profile</a>
+      <div class="col-md">
+      </div>
+      <div class="col-md text-right" class="dropdown">
+          <a style="color: white" class="nav-link dropdown-toggle" data-toggle="dropdown"> <span role="button">My profile</span></span></a>
           <div class="dropdown-menu text-center">
-            <a href="./profile.html">My profile</a>
+            <a href="profile.html">My profile</a>
             <div class="dropdown-divider"></div>
             <a href="#" onclick="logout()" class="dropdown-item">Log out</a>
           </div>
@@ -96,21 +51,6 @@
     <script>getUsernameNavBar()</script>
     <script>getUsername()</script>
     <script>getAvatar()</script>
-    <script>
-      function logout() {
-          localStorage.clear();
-          location.assign("login.html");
-      }
-
-      function favoriteRoom(){
-        let favoriteRoom = window.localStorage.getItem("favoriteRoom");
-        console.log("favoriteRoom", favoriteRoom);
-        if (favoriteRoom === null){
-          favoriteRoom = "./room.html?id=otaku"; //en caso de que no haya entrado el jugador nunca antes
-        }
-        document.getElementById("favorite").setAttribute("href", favoriteRoom);
-      }
-  </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

@@ -118,7 +118,7 @@ else if(urlc.includes('images')){
     });
 }
 
-else if(urlc.includes('model')){
+if(urlc.includes('model')||urlc.includes('logic')){
     console.log("path.extname", path.extname);
     urlc = `${__dirname}`+urlc;
     console.log("urlc", urlc);

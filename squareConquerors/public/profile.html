@@ -10,78 +10,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="../images/square-conquerors-favicon.ico">
-
-
-    <script>
-
-    function updatePlayer(){
-        let username = window.localStorage.getItem("username");
-        console.log("username", username);
-        let newUsername = document.forms["profile-form"]["username"].value;
-        let newPassword = document.forms["profile-form"]["password"].value;
-        let newAvatar = document.forms["profile-form"]["selectedAvatar"].value;
-        console.log(newAvatar, "newAvatar")
-        if (newAvatar === ""){
-            newAvatar = "./images/mickey.jpg" //ponemos un avatar por default en caso de que el usaurio no seleccione ninguno
-        }
-        let playersRegistered = window.localStorage.getItem("players");
-        let savedPlayers = JSON.parse(playersRegistered);
-        for (let i= 0; i < savedPlayers.length; i++){
-            console.log("playersRegistered", savedPlayers[i].username)
-            if(username == savedPlayers[i].username){
-                savedPlayers[i].username = newUsername; 
-                savedPlayers[i].password = newPassword; 
-                savedPlayers[i].avatar = newAvatar; 
-            }
-        }
-        localStorage.setItem('players', JSON.stringify(savedPlayers));
-        localStorage.setItem('username', newUsername);
-    
-        return true;
-    }
-    
-          
-   
-    function logout() {
-        localStorage.clear();
-        location.assign("login.html");
-    }
-    
-    function getAvatar(){
-        let username = window.localStorage.getItem('username');
-        console.log("username", username)
-        playersRegistered = window.localStorage.getItem('players');
-        let savedPlayers = JSON.parse(playersRegistered);
-        let playerLoggedIn = savedPlayers.find(player => player.username == username);
-        let savedAvatar = playerLoggedIn.avatar; 
-        document.getElementById("photo_avatar").setAttribute("src", savedAvatar);
-    }
-    
-    function getUsernameNavBar(){
-          let username = window.localStorage.getItem('username');
-          document.getElementById("usernameNavBar").innerHTML = username;
-    }
-
-    function getUsername(){
-        let username = window.localStorage.getItem('username');
-        document.getElementById("username_change").setAttribute("placeholder", username);
-    }
-    
-    </script>
-
+    <script type="text/javascript" src="../logic/profile.js"></script>
 
     <title>My profile</title>
 </head>
 <nav class="navbar navbar-dark bg-dark">
-    <div class="col-md-1">
-      <a style="color: white" href="../"><img src="../images/backarrow.png" width="20px" height="20px" alt=""></a>
-    </div>
-    <div class="col-md-5">
+    <div class="col-md-10">
+      <a style="color: white" href="../"><img src="../images/backarrow.png" style="margin-bottom:3px; margin-right:5px;" width="15px" height="15px" alt=""></a>
       <a style="color: white"><span>Hello <span id="usernameNavBar"></span></span></a>
     </div>
-    <div class="col-md-6 text-right" class="dropdown">
-        <a style="color: white" class="nav-link dropdown-toggle" data-toggle="dropdown"> <span>My profile</span></span></a>
-        <div class="dropdown-menu text-right">
+    <div class="col-md">
+    </div>
+    <div class="col-md text-right" class="dropdown">
+        <a style="color: white" class="nav-link dropdown-toggle" data-toggle="dropdown"> <span role="button">My profile</span></span></a>
+        <div class="dropdown-menu text-center">
           <a href="profile.html">My profile</a>
           <div class="dropdown-divider"></div>
           <a href="#" onclick="logout()" class="dropdown-item">Log out</a>

@@ -10,38 +10,6 @@
       <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet"> 
       <link rel="shortcut icon" type="image/x-icon" href="../images/square-conquerors-favicon.ico">
       <link rel="stylesheet" href="../styles/otaku_style.css">
-
-      <script>
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      const room = urlParams.get('id');
-      console.log("esto es room", room);
-
-
-      function getAvatar(){
-          let username = window.localStorage.getItem('username');
-          let avatar = window.localStorage.getItem('avatar');
-          document.getElementById("avatar").setAttribute("src", avatar);
-          if (avatar == null){
-          playersRegistered = window.localStorage.getItem('players');
-          let savedPlayers = JSON.parse(playersRegistered);
-          let playerLoggedIn = savedPlayers.find(player => player.username == username);
-          avatar = playerLoggedIn.avatar; 
-          document.getElementById("avatar").setAttribute("src", avatar);
-        }
-      } 
-
-      function dinamicBackground(){
-        if (room === 'reptilian'){
-          document.body.style.backgroundImage = "url('../images/obama-reptiliano.jpeg')";
-        }
-        else if (room === 'simpsons'){
-          document.body.style.backgroundImage = "url('../images/simpsonsall.jpeg')";
-          document.querySelector("h3").setAttribute("style", "color: black!important");
-        }
-      }
-      </script>
-
       <title>squareConquerors</title>
     </head>
 
@@ -967,21 +935,10 @@
               </div>
             </div>   
 
-      <script src="../model/app.js"></script>
-
-      <script>document.getElementById("nameroom").innerHTML = room;</script>
+      <script type="text/javascript" src="../logic/room.js"></script>
       <script>
-          function logout() {
-              localStorage.clear();
-              location.assign("login.html");
-          }
-      </script>
-      <!-- Optional JavaScript -->
-      <script>
-        function goto(){
-          window.location="selectrooms.html";
-        }
-        dinamicBackground();
+        document.getElementById("nameroom").innerHTML = room;
+        dinamicBackground()
       </script>
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
