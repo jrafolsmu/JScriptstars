@@ -6,7 +6,7 @@
         let newAvatar = document.forms["profile-form"]["selectedAvatar"].value;
         console.log(newAvatar, "newAvatar")
         if (newAvatar === ""){
-            newAvatar = "./images/mickey.jpg" //ponemos un avatar por default en caso de que el usaurio no seleccione ninguno
+            newAvatar = "../images/mickey.jpg" //ponemos un avatar por default en caso de que el usaurio no seleccione ninguno
         }
         let playersRegistered = window.localStorage.getItem("players");
         let savedPlayers = JSON.parse(playersRegistered);

@@ -33,4 +33,4 @@ class Player {
 
 }
 
-let Player1 = new Player('Pepe', 'pepe12345', '../images/vegeta.jpg');
+let Player1 = new Player('Pepe', 'pepe12345', '../public/images/vegeta.jpg');

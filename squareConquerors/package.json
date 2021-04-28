@@ -1,0 +1,28 @@
+{
+  "name": "squareconquerors",
+  "version": "1.0.0",
+  "description": "Proyecto que consistirá en el desarrollo de un juego multijugador con JavaScript utilizando en el frontend APIs HTML5 y Bootstrap y en el backend con NodeJS ",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "pug": "^3.0.2",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^10.15.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon routes/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrafolsmu/JScriptstars.git"
+  },
+  "author": "JScriptstars",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrafolsmu/JScriptstars/issues"
+  },
+  "homepage": "https://github.com/jrafolsmu/JScriptstars#readme"
+}
