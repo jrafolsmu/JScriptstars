@@ -23,7 +23,7 @@
       <div class="col-md text-right" class="dropdown">
           <a style="color: white" class="nav-link dropdown-toggle" data-toggle="dropdown"> <span role="button">My profile</span></span></a>
           <div class="dropdown-menu text-center">
-            <a href="profile.html">My profile</a>
+            <a href="profile.pug">My profile</a>
             <div class="dropdown-divider"></div>
             <a href="#" onclick="logout()" class="dropdown-item">Log out</a>
           </div>
@@ -35,13 +35,13 @@
     <h6 class="text-left text-info font-italic">Or would you like to go to your favorite <a id="favorite" style="color: red" href="#" onclick="favoriteRoom()">room</a>?</h6>
     <img id="avatar" class="text-center" height="100px" ondragstart="drag(event)" draggable="true" src="" alt=""/>
     <div id="salas" class="row salas">
-      <div id="otaku" class="col-md-3 offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.html?id=otaku">
+      <div id="otaku" class="col-md-3 offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.pug?id=otaku">
         <span>Otaku room</span> 
       </div>
-      <div id="reptilian"  class="col-md-3  offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.html?id=reptilian">
+      <div id="reptilian"  class="col-md-3  offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.pug?id=reptilian">
         <span>Reptilian room</span>
       </div>
-      <div id="simpsons" class="col-md-3  offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.html?id=simpsons">
+      <div id="simpsons" class="col-md-3  offset-md-1 sala" ondrop="drop(event)" ondragover="allowDrop(event)" url="/room.pug?id=simpsons">
         <span>Simpsons room</span>
       </div>
     </div>

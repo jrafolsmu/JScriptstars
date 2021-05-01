@@ -1,0 +1,57 @@
+doctype html
+head
+  // Required meta tags
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  // Bootstrap CSS
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css' integrity='sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l' crossorigin='anonymous')
+  link(rel='stylesheet' href='./styles/login-style.css')
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap' rel='stylesheet')
+  link(rel='shortcut icon' type='image/x-icon' href='.images/square-conquerors-favicon.ico')
+  script(type='text/javascript' src='./logic/selectrooms.js')
+  title squareConquerors
+nav.navbar.navbar-dark.bg-dark
+  .col-md-10
+    a(style='color: white' href='../')
+      img(src='.images/backarrow.png' style='margin-bottom:3px; margin-right:5px;' width='15px' height='15px' alt='')
+    a(style='color: white')
+      span
+        | Hello 
+        span#usernameNavBar
+  .col-md
+  .col-md.text-right
+    a.nav-link.dropdown-toggle(style='color: white' data-toggle='dropdown')
+      span(role='button') My profile
+    .dropdown-menu.text-center
+      a(href='profile.pug') My profile
+      .dropdown-divider
+      a.dropdown-item(href='#' onclick='logout()') Log out
+.container
+  h3.text-left.text-info
+    | Choose your room, 
+    span#username
+  h5.text-left.text-info Please drag your avatar to the room where you want to play
+  h6.text-left.text-info.font-italic
+    | Or would you like to go to your favorite 
+    a#favorite(style='color: red' href='#' onclick='favoriteRoom()') room
+    | ?
+  img#avatar.text-center(height='100px' ondragstart='drag(event)' draggable='true' src='' alt='')
+  #salas.row.salas
+    #otaku.col-md-3.offset-md-1.sala(ondrop='drop(event)' ondragover='allowDrop(event)' url='/room.pug?id=otaku')
+      span Otaku room
+    #reptilian.col-md-3.offset-md-1.sala(ondrop='drop(event)' ondragover='allowDrop(event)' url='/room.pug?id=reptilian')
+      span Reptilian room
+    #simpsons.col-md-3.offset-md-1.sala(ondrop='drop(event)' ondragover='allowDrop(event)' url='/room.pug?id=simpsons')
+      span Simpsons room
+// Optional JavaScript
+// jQuery first, then Popper.js, then Bootstrap JS
+script.
+  getUsernameNavBar()
+script.
+  getUsername()
+script.
+  getAvatar()
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')

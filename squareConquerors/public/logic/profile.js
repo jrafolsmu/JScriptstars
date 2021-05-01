@@ -28,7 +28,7 @@
    
     function logout() {
         localStorage.clear();
-        location.assign("login.html");
+        location.assign("login.pug");
     }
     
     function getAvatar(){

@@ -16,7 +16,8 @@ var selectroomsRoute = require ('./selectroomsRoute')
 var profileRoute = require ('./profileRoute')
 var roomRoute = require ('./roomRoute')
 
-
+// Se indica el directorio donde se almacenarán las plantillas 
+app.set('views', './views');
 //Set engine to pug
 app.set('view engine', 'pug');
 

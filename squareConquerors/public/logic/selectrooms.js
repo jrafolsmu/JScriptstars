@@ -43,14 +43,14 @@ function getAvatar(){
 
 function logout() {
     localStorage.clear();
-    location.assign("login.html");
+    location.assign("login.pug");
 }
 
 function favoriteRoom(){
   let favoriteRoom = window.localStorage.getItem("favoriteRoom");
   console.log("favoriteRoom", favoriteRoom);
   if (favoriteRoom === null){
-    favoriteRoom = "./room.html?id=otaku"; //en caso de que no haya entrado el jugador nunca antes
+    favoriteRoom = "./room.pug?id=otaku"; //en caso de que no haya entrado el jugador nunca antes
   }
   document.getElementById("favorite").setAttribute("href", favoriteRoom);
 }

@@ -4,8 +4,9 @@ const path = require('path');
 
 
 router.get('/' , function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/register.html'));
-    console.log("register path", path.join(__dirname, '../views/register.html'))
+    res.render('register.pug');
+    //res.sendFile(path.join(__dirname, '../views/register.pug'));
+    //console.log("register path", path.join(__dirname, '../views/register.pug'))
 })
 
 module.exports = router

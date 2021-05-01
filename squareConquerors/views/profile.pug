@@ -1,0 +1,92 @@
+doctype html
+head
+  // Bootstrap CSS
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css' integrity='sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l' crossorigin='anonymous')
+  link(rel='stylesheet' href='./styles/login-style.css')
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap' rel='stylesheet')
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap' rel='stylesheet')
+  link(rel='shortcut icon' type='image/x-icon' href='./images/square-conquerors-favicon.ico')
+  script(type='text/javascript' src='./logic/profile.js')
+  title My profile
+nav.navbar.navbar-dark.bg-dark
+  .col-md-10
+    a(style='color: white' href='../')
+      img(src='./images/backarrow.png' style='margin-bottom:3px; margin-right:5px;' width='15px' height='15px' alt='')
+    a(style='color: white')
+      span
+        | Hello 
+        span#usernameNavBar
+  .col-md
+  .col-md.text-right
+    a.nav-link.dropdown-toggle(style='color: white' data-toggle='dropdown')
+      span(role='button') My profile
+    .dropdown-menu.text-center
+      a(href='profile.pug') My profile
+      .dropdown-divider
+      a.dropdown-item(href='#' onclick='logout()') Log out
+#profile
+  .container
+    #profile-row
+      form#profile-form.form(action='./selectrooms.pug' method='post' onsubmit='return updatePlayer()')
+        .row
+          .col-md-6
+            h3.text-left.text-info My profile
+            svg(width='450' height='30' viewbox='1000 65 200 130')
+              line(x1='50' y1='75' x2='1750' y2='75' style='stroke:#1788b8; stroke-width:15; stroke-linecap: butt')
+            label.avatars
+            div
+              img#photo_avatar(src='./images/Chewbacca.png' style='height:200px; margin-bottom:25px;')
+            .form-group
+              label#avatar-label.text-info(for='avatar' style='font-size:16px' required='') Please, choose your new avatar
+              br
+              #avatars
+                form
+                  label.avatars
+                    input(type='radio' name='selectedAvatar' value='./images/darthVader.png')
+                    img(src='./images/darthVader.png' alt='')
+                  label.avatars
+                    input(type='radio' name='selectedAvatar' value='./images/goku.jpg')
+                    img(src='./images/goku.jpg' alt='')
+                  label.avatars
+                    input(type='radio' name='selectedAvatar' value='./images/mickey.jpg')
+                    img(src='./images/mickey.jpg' alt='')
+                  label.avatars
+                    input(type='radio' name='selectedAvatar' value='./images/naruto.jpg')
+                    img(src='./images/naruto.jpg' alt='')
+                  label.avatars
+                    input(type='radio' name='selectedAvatar' value='./images/vegeta.jpg')
+                    img(src='./images/vegeta.jpg' alt='')
+            .form-group
+              label#lbl_username.text-info(for='username') Change username:
+              br
+              input#username_change.form-control(type='text' name='username' placeholder='Username' required='')
+            .form-group
+              label#lbl_password.text-info(for='password') Change password:
+              br
+              input#change_password.form-control(type='password' name='password' placeholder='***********' pattern='^[a-zA-Z][a-zA-Z0-9]{3,15}$' title='The password field must begin with a letter, and contain letters and numbers. It must also contain from 3 to 15 characters' required='')
+              br
+              label#lbl_message.text-info(style='font-size:16px; margin-bottom: 50px')
+                | If you don&apos;t want to make any changes, just 
+                a(href='./selectroom') go back
+              br
+          .col-md-6.text-center
+            .form-group
+              #logo
+                img(src='./images/square-conquerors-logo.png' height='400' width='400')
+              input#save-button.btn.btn-info.btn-md(type='submit' name='save' value='Save changes')
+              button.btn.btn-info.btn-md(onclick='logout()') Log out
+    div
+// Optional JavaScript
+// jQuery first, then Popper.js, then Bootstrap JS
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+script.
+  getUsernameNavBar()
+script.
+  getUsername()
+script.
+  getAvatar()

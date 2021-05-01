@@ -140,16 +140,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-//Otras lógicas de room.html
+//Otras lógicas de room.pug
 
 
 function logout() {
     localStorage.clear();
-    location.assign("login.html");
+    location.assign("login.pug");
 }
 
 function goto(){
-    window.location="selectrooms.html";
+    window.location="selectrooms.pug";
 }
 
 function getAvatar(){
