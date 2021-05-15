@@ -17,7 +17,7 @@ function isUserRegistered(){
         userRegistered = true
     } else if(newPlayerUsername !== undefined && newPlayerPassword == undefined){
         userRegistered = false;
-        alert("The password you have introduced in not correct. Please, try again.")
+        alert("The password you have introduced is not correct. Please, try again.")
     } else{
         userRegistered = false;
         alert("This player is not registered. Please register first in order to play the game!");
