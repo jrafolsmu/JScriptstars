@@ -7,10 +7,14 @@ let path = require('path');*/
 // ExpressJS server
 const express = require('express')
 const bodyParser = require('body-parser'); // dependencia adicional para el manejo de datos en la recepción
+const methodOverride = require("method-override");
 const app = express()
 const port = 3000
 const host = 'localhost'
 
+var mongoose = require('mongoose');
+require('../model/players');
+require('../data/players');
 let path = require('path')
 var loginRoute = require('./loginRoute')
 var registerRoute = require('./registerRoute')
@@ -20,8 +24,13 @@ var roomRoute = require ('./roomRoute')
 var api = require('../api/api')
 var playersApiRoute = require('../api/playersApiRoute')
 
+
+
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(methodOverride());
+
 
 /*let player1 = {id: 1, username: 'Paco', password: 'Password12345', avatar: "../images/vegeta.jpg"};
 let player2 = {id: 2, username: 'Javascripstars', password: 'Password12345', avatar: "../images/mickey.jpg"};
@@ -230,11 +239,18 @@ app.use("/api", api);
 app.use("/api/players.*", playersApiRoute);
 
 
-//Lanzamos el servidor de forma asincrona
-server = app.listen(port, host, () => {
-    console.log(`Server is running on http://${host}:${port}`);
-});
+//Lanzamos el servidor de forma asincrona y añadimos conexión a la base de datos
+mongoose.connect('mongodb://localhost:27017/players', {useNewUrlParser: true, useUnifiedTopology: true},
 
+function(err, res) {
+    if(err) {
+        console.log('ERROR: connecting to Database. ' + err);
+    }
+    server = app.listen(port, host, () => {
+        console.log(`Server is running on http://${host}:${port}`);
+    });
+
+    
 // my socket
 //socket.io instantiation
 const io = require("socket.io")(server, {
@@ -316,6 +332,8 @@ io.on('connection', (socket) => {
         io.in(data.room).emit("eat apple", data);
     })
 })
+});
+
 
 
 
