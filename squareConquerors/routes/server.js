@@ -240,7 +240,7 @@ app.use("/api/players.*", playersApiRoute);
 
 
 //Lanzamos el servidor de forma asincrona y añadimos conexión a la base de datos
-mongoose.connect('mongodb://localhost:27017/players', {useNewUrlParser: true, useUnifiedTopology: true},
+mongoose.connect('mongodb://localhost:27017/squareConquerors', {useNewUrlParser: true, useUnifiedTopology: true},
 
 function(err, res) {
     if(err) {

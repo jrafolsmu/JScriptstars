@@ -2,11 +2,10 @@ var mongoose = require('mongoose')
 var Schema   = mongoose.Schema;
 
 var playersSchema = new Schema({
-  id:    { type: Number },
   username:     { type: String },
   password:  { type: String },
   avatar:    { type: String, enum:
-  ['mickey.jpg', 'naruto.jpg', 'goku.jpg', 'darthVader.jpg', 'vegeta.jpg']
+  ['./images/mickey.jpg', './images/naruto.jpg', './images/goku.jpg', './images/darthVader.png', './images/vegeta.jpg']
         },
 });
 

@@ -1,15 +1,26 @@
 var mongoose = require('mongoose')
 var Player  = mongoose.model('Player');
 
-try {
-    Player.insertMany( [
-       { id: 1, username: "Paco", password: 'Password12345', avatar: "vegeta.jpg" },
-       { id: 2, username: "JScripstars", password: 'Password12345', avatar: "mickey.jpg"},
-       { id: 3, username: "Superman", password: 'Password12345', avatar:"naruto.jpg" }
-    ] );
- } catch (e) {
-    console.log (e);
- }
+Player.findOne({ username: "Paco" }, function (err, found) {
+    if(err) console.log(err);
+    if(found){
+        console.log("Initial players have already been created");
+
+    }else{
+        try {
+            Player.insertMany( [
+               { username: "Paco", password: 'Password12345', avatar: "vegeta.jpg" },
+               { username: "JScripstars", password: 'Password12345', avatar: "mickey.jpg"},
+               { username: "Superman", password: 'Password12345', avatar:"naruto.jpg" }
+            ] );
+         } catch (e) {
+            console.log (e);
+         }
+    }
+});
+
+
+
 
 /*
 let player1 = new Player({
