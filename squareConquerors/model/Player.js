@@ -1,36 +1,23 @@
-class Player {
-    constructor(username, password, avatar){
-        this.username = username;
-        this.password = password;
-        this.avatar = avatar;
+const mongoose = require('mongoose');
+
+const PlayerSchema = mongoose.Schema({
+    username: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    avatar: {
+        type: String,
+    },
+    favoriteRoom: {
+        type: String,
     }
+});
 
-    //Getters
-    get getUsername(){
-        return this.username;
-      }
+const Player = mongoose.model('Player', PlayerSchema)
 
-    get getPassword(){
-        return this.password;
-    }
-
-    get getAvatar(){
-        return this.avatar;
-    }
-
-    //Setters
-    set setUsername(username){
-      this.username = username;
-    }
-
-    set setPassword(password){
-        this.password = password;
-    }
-
-    set setAvatar(avatar){
-        this.avatar = avatar;
-    }
-
-}
-
-let Player1 = new Player('Pepe', 'pepe12345', '../public/images/vegeta.jpg');
+module.exports = Player;

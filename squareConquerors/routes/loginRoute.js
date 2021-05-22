@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 const path = require('path');
-
+// const Player = require('./../db/model/Player');
 
 router.get('/', function (req, res) {
     res.render('login.pug');

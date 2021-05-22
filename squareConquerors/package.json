@@ -4,9 +4,7 @@
   "description": "Proyecto que consistirá en el desarrollo de un juego multijugador con JavaScript utilizando en el frontend APIs HTML5 y Bootstrap y en el backend con NodeJS ",
   "main": "server.js",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "method-override": "^3.0.0",
     "mongoose": "^5.12.9",
     "nodemon": "^2.0.7",
     "pug": "^3.0.2",

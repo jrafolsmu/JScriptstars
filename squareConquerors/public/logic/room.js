@@ -385,6 +385,47 @@ document.addEventListener("DOMContentLoaded", () => {
     //exit game
     backBtn.addEventListener("click", function () {
         socket.emit("game end", currentUser);
+        let datas = [];
+        if (currentUser.usernumber === 0) {
+            joinedUsers.map(user => {
+                let data = {};
+                switch (user.usernumber) {
+                    case 0:
+                        data = {
+                            user: user.username,
+                            score: score
+                        }
+                        break;
+                    case 1:
+                        data = {
+                            user: user.username,
+                            score: redScore
+                        }
+                        break;
+                    case 2:
+                        data = {
+                            user: user.username,
+                            score: greenScore
+                        }
+                        break;
+                    case 3:
+                        data = {
+                            user: user.username,
+                            score: yellowScore
+                        }
+                        break;
+                    default:
+                        break;
+                }
+                datas.push(data);
+            })
+
+            $.post("http://localhost:3000/api/score",
+                {
+                    data: datas,
+                    room: currentUser.roomname
+                })
+        }
         goto();
     });
     socket.on('game end', (data) => {

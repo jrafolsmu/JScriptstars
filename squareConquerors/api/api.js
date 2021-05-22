@@ -1,8 +1,12 @@
 var express = require('express')
 var router = express.Router({mergeParams: true})
 var players = require('./playersApiRoute')
+var auth = require('./auth')
+var score = require('./scoreApiRoute')
 
 router.use('/players', players)
+router.use('/auth', auth)
+router.use('/score', score)
 
 
 let response = {

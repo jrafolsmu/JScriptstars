@@ -11,6 +11,7 @@ const qString = window.location.search;
 const params = new URLSearchParams(qString);
 let roomname = params.get('id');
 let currentUser = {};
+let joinedUsers = [];
 
 socket.emit("join room", { username: username, roomname: roomname });
 
@@ -26,6 +27,7 @@ const addToUsersBox = (user) => {
 };
 socket.on('user list', (users) => {
     membersBox.innerHTML = ""
+    joinedUsers = users;
     users.map((user, key) => {
         addToUsersBox(user)
     })
